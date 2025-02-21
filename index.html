@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coração Para Duda</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #222;
+        }
+        .heart {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            transform: rotate(-45deg);
+            animation: pulse 1s infinite;
+            cursor: pointer;
+        }
+        .heart::before, .heart::after {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50%;
+        }
+        .heart::before {
+            top: -50px;
+            left: 0;
+        }
+        .heart::after {
+            left: 50px;
+            top: 0;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 24px;
+            color: white;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1) rotate(-45deg); }
+            50% { transform: scale(1.1) rotate(-45deg); }
+            100% { transform: scale(1) rotate(-45deg); }
+        }
+        @keyframes magic {
+            0% { transform: scale(1) rotate(-45deg); box-shadow: 0 0 5px red; }
+            50% { transform: scale(1.3) rotate(-45deg); box-shadow: 0 0 20px red; }
+            100% { transform: scale(1) rotate(-45deg); box-shadow: 0 0 5px red; }
+        }
+    </style>
+</head>
+<body>
+    <div class="heart" onclick="showMagic()"></div>
+    <div class="message" id="message">Eu te amo Duda! Com Carinho Arthur pires</div>
+   
+    <script>
+        function showMagic() {
+            const heart = document.querySelector('.heart');
+            const message = document.getElementById('message');
+            heart.style.animation = 'magic 1.5s ease-in-out';
+            setTimeout(() => {
+                message.style.opacity = '1';
+            }, 700);
+        }
+    </script>
+</body>
+</html>
+
